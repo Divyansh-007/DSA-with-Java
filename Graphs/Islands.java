@@ -22,7 +22,7 @@ public class Solution {
 		 * Return output and don't print it.
 	 	 * Taking input and printing output is handled automatically.
         */
-        boolean[] visited = new boolean[n];
+        	boolean[] visited = new boolean[n];
 		int count = 0;
 		
 		for(int i = 0; i < n; i++) {
@@ -34,6 +34,4 @@ public class Solution {
 		
 		return count;
 	}
-
-
 }
