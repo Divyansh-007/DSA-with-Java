@@ -1,0 +1,70 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public List<Double> averageOfLevels(TreeNode root) {
+        List<Double> avg = new ArrayList<>();
+        
+        Queue<TreeNode> q = new LinkedList<>();
+        List<Integer> curr = null;
+        q.add(root);
+        q.add(null);
+        
+        while(!q.isEmpty()){
+            TreeNode front = q.poll();
+            if(front == null){
+                if(q.isEmpty()){
+                    double lvlSum = 0.0;
+                    int count = curr.size();
+                    
+                    for(int elem : curr){
+                        lvlSum += elem;
+                    }
+                    
+                    avg.add(lvlSum / count);
+                    break;
+                }else{
+                    double lvlSum = 0.0;
+                    int count = curr.size();
+                    
+                    for(int elem : curr){
+                        lvlSum += elem;
+                    }
+                    
+                    avg.add(lvlSum / count);
+                    curr = null;
+                    q.add(null);
+                }
+            }else{
+                if(curr == null){
+                    curr = new ArrayList<Integer>();
+                    curr.add(front.val);
+                }else{
+                    curr.add(front.val);
+                }
+                
+                if(front.left != null){
+                    q.add(front.left);
+                }
+                
+                if(front.right != null){
+                    q.add(front.right);
+                }
+            }
+        }
+        
+        return avg;      
+    }
+}
