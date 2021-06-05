@@ -42,9 +42,17 @@ class Solution {
             temp = temp.next;
         }
         
-        firstTail.next = secondHead;
+        ListNode finalHead = null;
         
-        return firstHead;
+        if(firstTail != null && secondHead != null){
+            firstTail.next = secondHead;    
+            finalHead = firstHead;
+        }else if(firstTail == null && secondHead != null){
+            finalHead = secondHead;
+        }else if(firstTail != null && secondHead == null){
+            finalHead = firstHead;
+        }
         
+        return finalHead;
     }
 }
