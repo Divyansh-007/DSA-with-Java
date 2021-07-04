@@ -8,7 +8,7 @@ class Solution {
         
         if(n == k){
             Arrays.sort(nums);
-            return nums[k - 1];
+            return nums[0];
         }
         
         PriorityQueue<Integer> pq = new PriorityQueue<>();
